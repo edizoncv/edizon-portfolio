@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #F1F4F9;
+    --text-primary: #000000;
+    --text-secondary: #666666;
+    --bg-card: #FFFFFF;
+    --color-accent: #4B5EFC;
+    --border-subtle: #E5E7EB;
+    scroll-behavior: smooth;
+  }
+
+  .dark {
+    --bg-primary: #111111;
+    --text-primary: #FFFFFF;
+    --text-secondary: #999999;
+    --bg-card: #1A1A1A;
+    --color-accent: #CCFF00;
+    --border-subtle: rgba(255, 255, 255, 0.1);
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .dark body {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+}
