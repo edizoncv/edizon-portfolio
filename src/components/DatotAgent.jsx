@@ -2,9 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Dev:        /api-proxy/pbiAgent → Vite proxy → Azure   (sin CORS)
-// Producción: URL directa de Azure (CORS habilitado con * en Azure Portal)
-const AZURE_URL = 'https://datot-pbi-agent-gvadhwc6hxctczfg.southcentralus-01.azurewebsites.net/api/pbiAgent';
-const API_URL = import.meta.env.DEV ? '/api-proxy/pbiAgent' : AZURE_URL;
+// Producción: /api/pbi-agent      → Cloudflare Function → Azure (sin CORS)
+const API_URL = import.meta.env.DEV ? '/api-proxy/pbiAgent' : '/api/pbi-agent';
 
 const KPIS = [
   { label: 'Unidades vendidas', value: '4,821' },
