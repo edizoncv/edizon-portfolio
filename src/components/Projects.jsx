@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const projects = [
@@ -34,6 +35,7 @@ const projects = [
 ];
 
 export default function Projects() {
+  const navigate = useNavigate();
   return (
     <section id="projects" className="w-full max-w-7xl mx-auto px-6 mt-32 mb-16 relative">
       <motion.div 
@@ -76,10 +78,20 @@ export default function Projects() {
                 </p>
                 
                 {/* Optional interactive button or tag */}
-                <button className="mt-8 flex items-center gap-2 text-white font-semibold text-sm tracking-widest uppercase hover:text-[#bfff00] transition-colors group">
-                  EXPLORAR
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                {project.id === 2 ? (
+                  <button
+                    onClick={() => navigate('/demo/inmobiliaria')}
+                    className="mt-8 flex items-center gap-2 text-[#bfff00] font-semibold text-sm tracking-widest uppercase hover:text-white transition-colors group border border-[#bfff00]/30 hover:border-white/30 px-5 py-2.5 rounded-full hover:bg-[#bfff00]/5"
+                  >
+                    EXPLORAR
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </button>
+                ) : (
+                  <button className="mt-8 flex items-center gap-2 text-white font-semibold text-sm tracking-widest uppercase hover:text-[#bfff00] transition-colors group">
+                    EXPLORAR
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </button>
+                )}
               </div>
 
               {/* Graphics / Dashboard Column */}
