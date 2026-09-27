@@ -1,14 +1,15 @@
-import { useNavigate } from 'react-router-dom';
+import mineTwinPreview from '../assets/minetwin-preview.webp';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const projects = [
   {
     id: 1,
-    title: "DIGITAL IDENTITY CAMPAIGN",
-    category: "Branding",
-    description: "Análisis integral de campañas y conversión de usuarios. Monitoreo en tiempo real del impacto de marca, consolidando múltiples fuentes de datos en un solo panel de Business Intelligence interactivo.",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop",
-    iframeSrc: "https://app.fabric.microsoft.com/view?r=eyJrIjoiN2EwZjE1MTAtM2U5ZC00Njg0LTliODUtODI1ODMwMWY5MjFhIiwidCI6IjZhNjUzMTg4LWFlYmYtNGNlNi04MDc5LTdlYmQ1YzE3Yzg4ZiJ9"
+    title: "DATOT MINETWIN",
+    category: "Digital Twin · Minería",
+    description: "Explora una operación minera conectada, desde la perforación hasta la molienda. Revisa equipos e indicadores, sigue el flujo del mineral y compara escenarios para comprender su impacto en la producción. Demo interactiva con datos sintéticos.",
+    image: mineTwinPreview,
+    href: "/demo/minetwin"
   },
   {
     id: 2,
@@ -78,7 +79,9 @@ export default function Projects() {
                 </p>
                 
                 {/* Optional interactive button or tag */}
-                {project.id === 2 ? (
+                {project.href ? (
+                  <Link to={project.href} className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#ccff00] px-6 py-3 text-black font-semibold text-sm tracking-widest uppercase hover:bg-[#dcff55] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ccff00]">EXPLORAR <span aria-hidden="true">→</span></Link>
+                ) : project.id === 2 ? (
                   <button
                     onClick={() => navigate('/demo/inmobiliaria')}
                     className="mt-8 flex items-center gap-2 text-[#bfff00] font-semibold text-sm tracking-widest uppercase hover:text-white transition-colors group border border-[#bfff00]/30 hover:border-white/30 px-5 py-2.5 rounded-full hover:bg-[#bfff00]/5"
@@ -98,7 +101,12 @@ export default function Projects() {
               <div className="w-full lg:w-[60%] group">
                 <div className="w-full overflow-hidden rounded-[24px] xl:rounded-[32px] shadow-2xl border border-white/10 bg-black/40 backdrop-blur-md transition-all duration-500 hover:border-white/20 hover:shadow-[0_0_40px_rgba(191,255,0,0.1)] relative">
                   
-                  {project.iframeSrc ? (
+                  {project.href ? (
+                    <Link to={project.href} aria-label="Explorar DATOT MineTwin, demo minera interactiva" className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ccff00]">
+                      <img src={project.image} alt="Interfaz de DATOT MineTwin con mapa de la mina, indicadores y control de simulación" width="1920" height="1500" loading="lazy" decoding="async" className="block w-full h-auto" />
+                      <div className="flex justify-between items-center gap-4 px-5 py-3 bg-[#191919] text-xs text-white/70"><span>Demo interactiva · Datos sintéticos</span><span className="text-[#ccff00]">Abrir MineTwin ↗</span></div>
+                    </Link>
+                  ) : project.iframeSrc ? (
                     <div className="w-full aspect-video relative">
                        <iframe 
                          title={`${project.title} - Power BI`}
